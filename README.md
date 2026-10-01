@@ -1,20 +1,7 @@
-# ePitch Master ⚽
+# ePitch Master ⚽ (ย้ายแล้ว)
 
-เว็บไซต์คู่มือ eFootball ภาษาไทย รวมเทคนิคการเล่น แทคติก การพัฒนานักเตะ และข่าวสารล่าสุด สำหรับผู้เล่นทั้งบนคอนโซลและมือถือ
+เว็บไซต์ย้ายไปที่ 🔗 https://epitchmaster.github.io/ แล้ว
 
-## ดูเว็บไซต์
+ซอร์สโค้ดอยู่ที่ https://github.com/epitchmaster/epitchmaster.github.io
 
-🔗 https://sonicpet22.github.io/epitch-master/
-
-## โครงสร้างไฟล์
-
-- `index.html` – หน้าเว็บหลัก
-- `style.css` – สไตล์และการจัดหน้า
-- `script.js` – การทำงานฝั่งหน้าเว็บ
-- `data.js` – ข้อมูลเนื้อหาของคู่มือ
-
-## การใช้งานบนเครื่อง
-
-เปิดไฟล์ `index.html` ด้วยเบราว์เซอร์ได้ทันที ไม่ต้องติดตั้งอะไรเพิ่ม
-
-เว็บไซต์เผยแพร่ผ่าน GitHub Pages
+Repo นี้เหลือเพียงหน้า redirect เพื่อให้ลิงก์เดิม https://sonicpet22.github.io/epitch-master/ ยังใช้งานได้
