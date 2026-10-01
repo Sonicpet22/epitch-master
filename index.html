@@ -344,6 +344,39 @@
   </div>
 </footer>
 
+<!-- ============ REPORT ISSUE ============ -->
+<button class="rp-fab" id="rpFab" type="button" aria-haspopup="dialog" aria-controls="rpPanel" aria-expanded="false">
+  <span class="rp-fab-ico" aria-hidden="true">💬</span><span class="rp-fab-txt">แจ้งปัญหา</span>
+</button>
+<div class="rp-backdrop" id="rpBackdrop" hidden></div>
+<section class="rp-panel" id="rpPanel" role="dialog" aria-modal="true" aria-labelledby="rpTitle" hidden>
+  <header class="rp-head">
+    <h2 id="rpTitle">แจ้งปัญหา / เสนอแนะ</h2>
+    <button class="rp-x" id="rpClose" type="button" aria-label="ปิด">✕</button>
+  </header>
+  <div class="rp-body">
+    <div class="rp-tabs" role="tablist" aria-label="ประเภทข้อความ">
+      <button type="button" role="tab" class="rp-tab" data-rp-type="ปัญหา" aria-selected="true">🐞 ปัญหา</button>
+      <button type="button" role="tab" class="rp-tab" data-rp-type="ข้อเสนอแนะ" aria-selected="false">💡 ข้อเสนอแนะ</button>
+      <span class="rp-tab-glider" aria-hidden="true"></span>
+    </div>
+    <form class="rp-form" id="rpForm" novalidate>
+      <label class="rp-label" for="rpMsg">ข้อความ</label>
+      <textarea id="rpMsg" class="rp-input rp-msg" maxlength="2000" rows="4" required placeholder="เล่าปัญหาที่เจอ เช่น กดอะไรแล้วเกิดอะไรขึ้น"></textarea>
+      <div class="rp-meta"><span class="rp-hint">Enter = ส่ง · Shift+Enter = ขึ้นบรรทัดใหม่</span><span class="rp-count" id="rpCount">0/2000</span></div>
+      <label class="rp-label" for="rpContact">ชื่อ / ช่องทางติดต่อ <small>(ไม่บังคับ)</small></label>
+      <input id="rpContact" class="rp-input" type="text" maxlength="200" autocomplete="off" placeholder="เช่น ชื่อเล่น, อีเมล หรือ LINE ID">
+      <input type="text" name="_honey" id="rpHoney" class="rp-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="rp-send" id="rpSend" type="submit"><span class="rp-send-txt">ส่งข้อความ</span> <span aria-hidden="true">➤</span></button>
+    </form>
+    <div class="rp-history">
+      <h3 class="rp-hist-h">ข้อความที่คุณส่ง <small>(บันทึกไว้ในเครื่องนี้เท่านั้น)</small></h3>
+      <ul class="rp-list" id="rpList"></ul>
+    </div>
+  </div>
+</section>
+<div class="rp-toast" id="rpToast" role="status" aria-live="polite"></div>
+
 <button class="to-top" id="toTop" aria-label="กลับขึ้นด้านบน">↑</button>
 
 <script src="data.js"></script>

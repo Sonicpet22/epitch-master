@@ -226,3 +226,141 @@
     }, { passive: true });
   }
 })();
+
+/* ===================== REPORT ISSUE / FEEDBACK ===================== */
+(function () {
+  "use strict";
+  var ENDPOINT = "https://formsubmit.co/ajax/sonicgame2024@gmail.com";
+  var SUBJECT = "ePitch Master: แจ้งปัญหา/ข้อเสนอแนะ";
+  var STORE = "epm-reports";
+  var MAX = 2000;
+  function $(s) { return document.querySelector(s); }
+  var fab = $("#rpFab"), panel = $("#rpPanel"), backdrop = $("#rpBackdrop"), closeBtn = $("#rpClose");
+  if (!fab || !panel) return;
+  var form = $("#rpForm"), msg = $("#rpMsg"), contact = $("#rpContact"), honey = $("#rpHoney");
+  var count = $("#rpCount"), send = $("#rpSend"), list = $("#rpList"), toastEl = $("#rpToast");
+  var tabsWrap = panel.querySelector(".rp-tabs"), tabs = panel.querySelectorAll(".rp-tab");
+  var type = "ปัญหา", sending = false, toastTimer = null, lastFocus = null;
+  var PH = { "ปัญหา": "เล่าปัญหาที่เจอ เช่น กดอะไรแล้วเกิดอะไรขึ้น", "ข้อเสนอแนะ": "อยากให้เพิ่มหรือปรับอะไร บอกเราได้เลย" };
+
+  function load() { try { var a = JSON.parse(localStorage.getItem(STORE) || "[]"); return Array.isArray(a) ? a : []; } catch (e) { return []; } }
+  function save(a) { try { localStorage.setItem(STORE, JSON.stringify(a.slice(0, 50))); } catch (e) {} }
+  function fmt(ts) {
+    try { return new Date(ts).toLocaleString("th-TH", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" }); }
+    catch (e) { return new Date(ts).toLocaleString(); }
+  }
+  function render() {
+    var items = load();
+    list.innerHTML = "";
+    if (!items.length) {
+      var li = document.createElement("li"); li.className = "rp-empty"; li.textContent = "ยังไม่มีข้อความที่ส่งจากเครื่องนี้"; list.appendChild(li); return;
+    }
+    items.forEach(function (it) {
+      var li = document.createElement("li"); li.className = "rp-item";
+      var top = document.createElement("div"); top.className = "rp-item-top";
+      var b = document.createElement("span"); b.className = "rp-badge" + (it.type === "ข้อเสนอแนะ" ? " sug" : ""); b.textContent = it.type;
+      var t = document.createElement("time"); t.dateTime = new Date(it.ts).toISOString(); t.textContent = fmt(it.ts);
+      top.appendChild(b); top.appendChild(t);
+      var p = document.createElement("p"); p.className = "rp-item-msg"; p.textContent = it.message;
+      li.appendChild(top); li.appendChild(p);
+      if (it.contact) { var c = document.createElement("div"); c.className = "rp-item-top"; c.style.margin = "4px 0 0"; c.textContent = "ติดต่อ: " + it.contact; li.appendChild(c); }
+      var st = document.createElement("div"); st.className = "rp-item-st" + (it.ok ? "" : " fail");
+      st.textContent = it.ok ? "✓ ส่งถึงผู้ดูแลแล้ว" : "⚠ ส่งไม่สำเร็จ";
+      li.appendChild(st);
+      list.appendChild(li);
+    });
+  }
+  function toast(text, isErr) {
+    toastEl.textContent = text;
+    toastEl.classList.toggle("err", !!isErr);
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove("show"); }, 4200);
+  }
+  function updateCount() {
+    var n = msg.value.length;
+    count.textContent = n + "/" + MAX;
+    count.classList.toggle("warn", n >= MAX * 0.9 && n < MAX);
+    count.classList.toggle("max", n >= MAX);
+  }
+  function setType(t) {
+    type = t;
+    for (var i = 0; i < tabs.length; i++) {
+      var on = tabs[i].getAttribute("data-rp-type") === t;
+      tabs[i].setAttribute("aria-selected", String(on));
+      if (on) tabsWrap.setAttribute("data-active", String(i));
+    }
+    msg.placeholder = PH[t] || PH["ปัญหา"];
+  }
+  function open() {
+    lastFocus = document.activeElement;
+    var nav = document.getElementById("nav"), burger = document.getElementById("burger");
+    if (nav) nav.classList.remove("open");
+    if (burger) burger.setAttribute("aria-expanded", "false");
+    panel.hidden = false; backdrop.hidden = false;
+    document.body.classList.add("rp-open");
+    fab.setAttribute("aria-expanded", "true");
+    render();
+    setTimeout(function () { try { msg.focus({ preventScroll: true }); } catch (e) { msg.focus(); } }, 60);
+  }
+  function close() {
+    panel.hidden = true; backdrop.hidden = true;
+    document.body.classList.remove("rp-open");
+    fab.setAttribute("aria-expanded", "false");
+    if (lastFocus && lastFocus.focus) lastFocus.focus(); else fab.focus();
+  }
+  function submit() {
+    if (sending) return;
+    var text = msg.value.trim();
+    if (!text) { toast("กรุณาพิมพ์ข้อความก่อนส่ง", true); msg.focus(); return; }
+    if (text.length > MAX) text = text.slice(0, MAX);
+    if (honey.value) { msg.value = ""; updateCount(); toast("ส่งข้อความเรียบร้อย ขอบคุณครับ 🙏"); return; }
+    sending = true; send.disabled = true; send.querySelector(".rp-send-txt").textContent = "กำลังส่ง…";
+    var who = contact.value.trim().slice(0, 200);
+    var ts = Date.now();
+    var payload = {
+      _subject: SUBJECT, _template: "table", _captcha: "false",
+      type: type, message: text, contact: who || "-",
+      page: location.href, sent_at: new Date(ts).toISOString(), user_agent: navigator.userAgent
+    };
+    var ctrl = ("AbortController" in window) ? new AbortController() : null;
+    var to = setTimeout(function () { if (ctrl) ctrl.abort(); }, 20000);
+    fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(payload),
+      signal: ctrl ? ctrl.signal : undefined
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; });
+    }).then(function (res) {
+      var ok = res.ok && (res.j.success === true || res.j.success === "true");
+      var items = load();
+      items.unshift({ type: type, message: text, contact: who, ts: ts, ok: ok });
+      save(items); render();
+      if (ok) {
+        msg.value = ""; updateCount();
+        toast("ส่งข้อความเรียบร้อย ขอบคุณที่ช่วยเราพัฒนาเว็บ 🙏");
+      } else {
+        toast("ส่งไม่สำเร็จ ลองใหม่อีกครั้งภายหลัง" + (res.j && res.j.message ? " (" + String(res.j.message).slice(0, 80) + ")" : ""), true);
+      }
+    }).catch(function () {
+      toast("ส่งไม่สำเร็จ ตรวจสอบอินเทอร์เน็ตแล้วลองใหม่", true);
+    }).then(function () {
+      clearTimeout(to);
+      sending = false; send.disabled = false; send.querySelector(".rp-send-txt").textContent = "ส่งข้อความ";
+    });
+  }
+
+  fab.addEventListener("click", open);
+  closeBtn.addEventListener("click", close);
+  backdrop.addEventListener("click", close);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !panel.hidden) close(); });
+  for (var i = 0; i < tabs.length; i++) tabs[i].addEventListener("click", function () { setType(this.getAttribute("data-rp-type")); });
+  msg.addEventListener("input", updateCount);
+  msg.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && !e.shiftKey && !e.isComposing && e.keyCode !== 229) { e.preventDefault(); submit(); }
+  });
+  form.addEventListener("submit", function (e) { e.preventDefault(); submit(); });
+  setType("ปัญหา"); updateCount(); render();
+  if (/[?#&]report\b/.test(location.search + location.hash)) open();
+})();
