@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="th" data-platform="console">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ePitch Master สนามแห่งเซียน — คู่มือ eFootball™ ทุกแพลตฟอร์ม</title>
+<meta name="description" content="คู่มือ eFootball ภาษาไทย: ปุ่มคอนโซล PS5/Xbox/PC, ปุ่มมือถือ Classic และ Touch & Flick, PS Remote Play, เทคนิครุก-รับ, แผนการเล่น, พัฒนานักเตะ และข่าวล่าสุด">
+<meta name="theme-color" content="#050b1f">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700;800&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#home" class="brand" aria-label="ePitch Master หน้าแรก">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40"><defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eaff00"/><stop offset="1" stop-color="#9dff00"/></linearGradient></defs><rect x="2" y="6" width="36" height="28" rx="7" fill="none" stroke="url(#bm)" stroke-width="2.4"/><line x1="20" y1="6" x2="20" y2="34" stroke="url(#bm)" stroke-width="2"/><circle cx="20" cy="20" r="5.5" fill="none" stroke="url(#bm)" stroke-width="2"/></svg>
+      </span>
+      <span class="brand-text"><span class="bt1">ePitch <b>Master</b></span><small>สนามแห่งเซียน</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="เมนูหลัก">
+      <a href="#home">หน้าแรก</a>
+      <a href="#console">คอนโซล</a>
+      <a href="#mobile">มือถือ</a>
+      <a href="#remote">Remote Play</a>
+      <a href="#techniques">เทคนิค</a>
+      <a href="#tactics">แผน & แท็กติก</a>
+      <a href="#development">พัฒนานักเตะ</a>
+      <a href="#news">ข่าว</a>
+    </nav>
+    <div class="pf-toggle" role="group" aria-label="เลือกแพลตฟอร์ม">
+      <button class="pf-btn" data-set-platform="console" aria-pressed="true">🎮 <span>Console</span></button>
+      <button class="pf-btn" data-set-platform="mobile" aria-pressed="false">📱 <span>Mobile</span></button>
+      <span class="pf-glider" aria-hidden="true"></span>
+    </div>
+    <button class="burger" id="burger" aria-label="เปิดเมนู" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="stadium" aria-hidden="true">
+    <div class="sky"></div>
+    <div class="stars"></div>
+    <div class="beam b1"></div><div class="beam b2"></div><div class="beam b3"></div><div class="beam b4"></div>
+    <svg class="towers" viewBox="0 0 1200 400" preserveAspectRatio="none">
+      <g class="tower" transform="translate(110,40)"><rect x="-4" y="40" width="8" height="300" fill="#0b1a44"/><rect x="-46" y="0" width="92" height="44" rx="6" fill="#0d1f52" stroke="#2c4fa8"/><g fill="#fffbd1">
+        <circle cx="-30" cy="12" r="6"/><circle cx="-10" cy="12" r="6"/><circle cx="10" cy="12" r="6"/><circle cx="30" cy="12" r="6"/><circle cx="-30" cy="31" r="6"/><circle cx="-10" cy="31" r="6"/><circle cx="10" cy="31" r="6"/><circle cx="30" cy="31" r="6"/></g></g>
+      <g class="tower" transform="translate(1090,40)"><rect x="-4" y="40" width="8" height="300" fill="#0b1a44"/><rect x="-46" y="0" width="92" height="44" rx="6" fill="#0d1f52" stroke="#2c4fa8"/><g fill="#fffbd1">
+        <circle cx="-30" cy="12" r="6"/><circle cx="-10" cy="12" r="6"/><circle cx="10" cy="12" r="6"/><circle cx="30" cy="12" r="6"/><circle cx="-30" cy="31" r="6"/><circle cx="-10" cy="31" r="6"/><circle cx="10" cy="31" r="6"/><circle cx="30" cy="31" r="6"/></g></g>
+    </svg>
+    <div class="crowd"></div>
+    <div class="pitch">
+      <svg viewBox="0 0 1000 400" preserveAspectRatio="none">
+        <g fill="none" stroke="rgba(255,255,255,.55)" stroke-width="3">
+          <rect x="40" y="20" width="920" height="360"/>
+          <line x1="500" y1="20" x2="500" y2="380"/>
+          <ellipse cx="500" cy="200" rx="90" ry="70"/>
+          <rect x="40" y="110" width="120" height="180"/><rect x="840" y="110" width="120" height="180"/>
+          <rect x="40" y="160" width="45" height="80"/><rect x="915" y="160" width="45" height="80"/>
+        </g>
+        <circle cx="500" cy="200" r="6" fill="#fff"/>
+      </svg>
+    </div>
+    <div class="haze"></div>
+  </div>
+
+  <div class="hero-content container">
+    <div class="hero-copy reveal">
+      <span class="eyebrow"><span class="live-dot"></span> <span id="heroWeek">อัปเดตประจำสัปดาห์</span></span>
+      <h1 class="hero-title">
+        <span class="t1">ePitch Master</span>
+        <span class="t2">สนามแห่งเซียน</span>
+      </h1>
+      <p class="hero-sub">คู่มือ eFootball™ ภาษาไทยครบทุกแพลตฟอร์ม — ปุ่มคอนโซล PS5 · Xbox · PC, ระบบสัมผัสบนมือถือ, เล่น PS5 ผ่าน <b>PS Remote Play</b> บน Android, เทคนิครุก–รับ, แผนการเล่น และการพัฒนานักเตะ</p>
+      <div class="hero-cta">
+        <a href="#console" class="btn btn-neon">เริ่มเรียนปุ่ม ⚡</a>
+        <a href="#remote" class="btn btn-glass">PS5 → มือถือ 📶</a>
+      </div>
+      <div class="hero-chips" id="platformChips"></div>
+    </div>
+
+    <aside class="hero-card glass reveal" aria-label="ปุ่มลัดตามแพลตฟอร์ม">
+      <div class="hc-head">
+        <span class="hc-title">⚡ ปุ่มลัด 5 คำสั่งที่ต้องรู้</span>
+        <span class="hc-pf only-console">PS5 ค่าเริ่มต้น</span><span class="hc-pf only-mobile">มือถือ Classic</span>
+      </div>
+      <ul class="hc-list only-console">
+        <li><span>Match-up</span><b data-kbd="[L2] + [LS]"></b></li>
+        <li><span>ตัวที่ 2 ช่วยเพรส</span><b data-kbd="[R1]"></b></li>
+        <li><span>Controlled Shot</span><b data-kbd="[R1] + [S]"></b></li>
+        <li><span>Stunning Kick</span><b data-kbd="[R2] สุด + ปุ่มเตะ"></b></li>
+        <li><span>Sharp Touch</span><b data-kbd="กด [R2] สุดแล้วปล่อย"></b></li>
+      </ul>
+      <ul class="hc-list only-mobile">
+        <li><span>Match-up</span><b>สไลด์ Pressure ซ้าย/ขวา</b></li>
+        <li><span>ตัวที่ 2 ช่วยเพรส</span><b>สไลด์ Pressure ขึ้น</b></li>
+        <li><span>Stunning Shot</span><b>สะบัด Shoot ซ้าย/ขวา</b></li>
+        <li><span>Stunning Pass</span><b>สะบัด Pass ซ้าย/ขวา</b></li>
+        <li><span>Sharp Touch</span><b>กด Dash + สะบัดจอย</b></li>
+      </ul>
+      <div class="hc-foot" id="heroVersion"></div>
+    </aside>
+  </div>
+  <a href="#overview" class="scroll-cue" aria-label="เลื่อนลง"><span></span></a>
+</section>
+
+<!-- ============ 1) OVERVIEW ============ -->
+<section class="section" id="overview">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-num">01</span>
+      <div><h2>ภาพรวม: แพลตฟอร์ม · Cross-play · โหมด</h2>
+      <p>eFootball™ เป็นเกมฟรีของ KONAMI เล่นได้ทั้งคอนโซล PC และมือถือ — แต่ปุ่ม การจับคู่ และฟีเจอร์บางอย่างต่างกัน</p></div>
+    </div>
+    <div class="grid-2">
+      <div class="glass card reveal">
+        <h3>🌍 Cross-play ทำงานอย่างไร</h3>
+        <ul class="ticks" id="crossplayList"></ul>
+      </div>
+      <div class="glass card reveal">
+        <h3>🎛️ เลือกเส้นทางของคุณ</h3>
+        <div class="path-grid">
+          <a class="path" href="#console"><span>🎮</span><b>คอนโซล / PC</b><small>PS5 · PS4 · Xbox · Steam (จอย)</small></a>
+          <a class="path" href="#mobile"><span>📱</span><b>มือถือ</b><small>iOS · Android ระบบสัมผัส</small></a>
+          <a class="path hot" href="#remote"><span>📶</span><b>PS5 ผ่าน Remote Play</b><small>เล่น PS5 บนมือถือ Android</small></a>
+          <a class="path" href="#tactics"><span>🧠</span><b>แท็กติก</b><small>แผน · สไตล์ทีม · คำสั่ง</small></a>
+        </div>
+      </div>
+    </div>
+    <h3 class="sub-title reveal">โหมดหลักในเกม</h3>
+    <div class="grid-4" id="modesGrid"></div>
+  </div>
+</section>
+
+<!-- ============ 2) CONSOLE ============ -->
+<section class="section section-alt" id="console">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-num">02</span>
+      <div><h2>🎮 ปุ่มคอนโซล (PS5 · PS4 · Xbox · PC จอย)</h2>
+      <p>โครงปุ่มเริ่มต้น — แสดงทั้ง PlayStation และ Xbox (PC ใช้จอย Xbox/DualSense ได้) ปุ่มทั้งหมดปรับแต่งได้ในเมนู</p></div>
+    </div>
+    <div class="legend reveal">
+      <span><i class="k ps-x">✕</i> ✕ Cross</span><span><i class="k ps-o">○</i> ○ Circle</span><span><i class="k ps-t">△</i> △ Triangle</span><span><i class="k ps-s">□</i> □ Square</span><span class="lg-flag">* = ค่าที่แพร่หลาย ไม่พบในคู่มือทางการ</span>
+    </div>
+    <div class="table-block reveal">
+      <h3 class="tb-title atk">⚔️ เกมรุก (Attack)</h3>
+      <div class="table-wrap"><table class="ctrl" id="tblAttack"></table></div>
+    </div>
+    <div class="table-block reveal spaced">
+      <h3 class="tb-title def">🛡️ เกมรับ (Defence)</h3>
+      <div class="table-wrap"><table class="ctrl" id="tblDefence"></table></div>
+    </div>
+    <div class="grid-2 tight">
+      <div class="table-block reveal">
+        <h3 class="tb-title gk">🧤 ผู้รักษาประตู & ลูกตั้งเตะ</h3>
+        <div class="table-wrap"><table class="ctrl" id="tblGK"></table></div>
+      </div>
+      <div class="pc-col reveal">
+        <div class="callout glass">
+          <b>🖥️ PC (Steam / Xbox on PC)</b>
+          <p>แนะนำเล่นด้วยจอย Xbox หรือ DualSense — ใช้คอลัมน์ Xbox / PlayStation ตามจอยที่เสียบ ตั้งค่าแยกต่อจอยได้ที่ [Extras] &gt; [Game Settings] &gt; [Controller]</p>
+        </div>
+        <div class="callout glass neon-edge">
+          <b>🧭 ตรวจปุ่มจริงในเกม</b>
+          <p>ระหว่างแข่ง กด Options/Menu → <b>Command List</b> เพื่อดูคำสั่งของเวอร์ชันที่ติดตั้งอยู่ · ฝึกท่าใน Training / Commands Tutorial ก่อนลงแข่ง</p>
+        </div>
+        <div class="callout glass">
+          <b>🎚️ Smart Assist (คอนโซล/PC)</b>
+          <p>[Extras] &gt; [Game Settings] &gt; [Controller] → เลือกจอย → [Detailed Settings] &gt; [Smart Assist] · บัญชีใหม่เปิดเป็นค่าเริ่มต้น</p>
+        </div>
+      </div>
+    </div>
+    <p class="footnote reveal" id="consoleFoot"></p>
+  </div>
+</section>
+
+<!-- ============ 3) MOBILE ============ -->
+<section class="section" id="mobile">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-num">03</span>
+      <div><h2>📱 ปุ่มมือถือ (iOS · Android)</h2>
+      <p>สองระบบหลัก: <b>Classic</b> (ปุ่มเสมือน) และ <b>Touch &amp; Flick</b> (เดิมชื่อ Advanced) — เปลี่ยนได้ในการตั้งค่าเกม</p></div>
+    </div>
+    <div class="grid-2 tight" id="mobileSchemes"></div>
+    <h3 class="sub-title reveal">💡 เคล็ดลับระบบสัมผัส</h3>
+    <div class="grid-3 snap" id="mobileTips"></div>
+    <p class="footnote reveal" id="mobileFoot"></p>
+  </div>
+</section>
+
+<!-- ============ REMOTE PLAY ============ -->
+<section class="section section-remote" id="remote">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-num">📶</span>
+      <div><h2>PS Remote Play: เล่น PS5 บนมือถือ Android</h2>
+      <p>สำหรับคนเล่น eFootball บน PS5 แต่ถือมือถือแทนทีวี — ตั้งค่าให้ถูกแล้วความหน่วงลดลงชัดเจน</p></div>
+    </div>
+    <div class="remote-flow reveal" aria-hidden="true">
+      <div class="node"><span>🎮</span>PS5<small>สาย LAN</small></div>
+      <div class="link wired"><i></i></div>
+      <div class="node"><span>🛜</span>เราเตอร์<small>5GHz</small></div>
+      <div class="link wifi"><i></i></div>
+      <div class="node"><span>📱</span>Android<small>+ จอย BT</small></div>
+    </div>
+    <div class="callout glass neon-edge reveal" id="remoteNote"></div>
+    <div class="grid-2 tight">
+      <div class="glass card reveal">
+        <h3>📋 สิ่งที่ต้องมี (อ้างอิง PlayStation)</h3>
+        <dl class="reqs" id="remoteReqs"></dl>
+      </div>
+      <div class="glass card reveal">
+        <h3>🛠️ ตั้งค่าทีละขั้น</h3>
+        <ol class="steps" id="remoteSteps"></ol>
+      </div>
+    </div>
+    <h3 class="sub-title reveal">⏱️ ลดความหน่วง (Latency)</h3>
+    <div class="grid-3 snap" id="remoteLatency"></div>
+    <h3 class="sub-title reveal">🆚 ปุ่มสัมผัส vs จอย Bluetooth</h3>
+    <div class="grid-2 tight" id="remoteCompare"></div>
+  </div>
+</section>
+
+<!-- ============ 4) TECHNIQUES ============ -->
+<section class="section section-alt" id="techniques">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-num">04</span>
+      <div><h2>เทคนิคเกมรุก & เกมรับ</h2>
+      <p>สลับปุ่มด้านบน <b>Console / Mobile</b> เพื่อดูวิธีกดของแพลตฟอร์มคุณในทุกการ์ด</p></div>
+    </div>
+    <div class="tech-switch reveal">
+      <span>กำลังแสดงวิธีกดของ:</span>
+      <div class="pf-toggle inline" role="group" aria-label="เลือกแพลตฟอร์ม">
+        <button class="pf-btn" data-set-platform="console">🎮 <span>Console</span></button>
+        <button class="pf-btn" data-set-platform="mobile">📱 <span>Mobile</span></button>
+        <span class="pf-glider" aria-hidden="true"></span>
+      </div>
+    </div>
+    <h3 class="sub-title reveal atk-t">⚔️ เกมรุก</h3>
+    <div class="grid-4 tech snap" id="techAttack"></div>
+    <h3 class="sub-title reveal def-t">🛡️ เกมรับ</h3>
+    <div class="grid-4 tech snap" id="techDefence"></div>
+  </div>
+</section>
+
+<!-- ============ 5) TACTICS ============ -->
+<section class="section" id="tactics">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-num">05</span>
+      <div><h2>แผนการเล่น & แท็กติก</h2>
+      <p>แผนยอดนิยม สไตล์ทีม (Team Playstyle) และ Individual Instructions — เลือกให้เข้ากับนักเตะที่มี ไม่ใช่ตามกระแส</p></div>
+    </div>
+    <div class="grid-3 snap" id="formations"></div>
+    <div class="callout glass neon-edge reveal" id="fluidNote"></div>
+    <h3 class="sub-title reveal">🧭 Team Playstyle — ใช้เมื่อไร</h3>
+    <div class="grid-3 snap" id="playstyles"></div>
+    <h3 class="sub-title reveal">📝 Individual Instructions พื้นฐาน</h3>
+    <div class="glass card reveal">
+      <div class="instr" id="instructions"></div>
+      <p class="footnote" id="instrNote"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6) DEVELOPMENT ============ -->
+<section class="section section-alt" id="development">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-num">06</span>
+      <div><h2>พัฒนานักเตะ & ความคุ้มค่า</h2>
+      <p>หลักการลง Progression Points ตามตำแหน่ง และวิธีเลือกนักเตะให้คุ้ม — เป็นหลักคิด ไม่มีตัวเลขค่าพลังสมมุติ</p></div>
+    </div>
+    <div class="glass card reveal">
+      <h3>🧬 10 หมวดของ Progression Points</h3>
+      <div class="cat-chips" id="progCats"></div>
+      <p class="footnote" id="progCatsNote"></p>
+    </div>
+    <div class="grid-2 tight">
+      <div class="table-block reveal">
+        <h3 class="tb-title atk">📍 ลำดับความสำคัญตามตำแหน่ง</h3>
+        <div class="table-wrap"><table class="ctrl prog" id="progTable"></table></div>
+        <p class="footnote" id="progTableNote"></p>
+      </div>
+      <div>
+        <h3 class="sub-title reveal mt0">🧠 หลักการลงแต้ม</h3>
+        <div class="stack" id="progPrinciples"></div>
+      </div>
+    </div>
+    <h3 class="sub-title reveal">💰 เลือกนักเตะให้คุ้มค่า</h3>
+    <div class="grid-3 snap" id="valueTips"></div>
+  </div>
+</section>
+
+<!-- ============ 7) NEWS ============ -->
+<section class="section" id="news">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-num">07</span>
+      <div><h2>อีเวนต์ & ข่าวล่าสุด</h2>
+      <p id="newsLead">อัปเดตทุกสัปดาห์ — ตรวจรายละเอียดจริงในหน้า Notices ของเกมเสมอ</p></div>
+    </div>
+    <div class="news-layout">
+      <div>
+        <div class="update-badge reveal" id="updateBadge"></div>
+        <div class="timeline" id="newsList"></div>
+      </div>
+      <aside>
+        <div class="glass card reveal">
+          <h3>📡 มุมมองเมตาสัปดาห์นี้</h3>
+          <div class="meta-list" id="metaNotes"></div>
+        </div>
+        <div class="glass card reveal">
+          <h3>🔗 แหล่งทางการ</h3>
+          <div class="link-list" id="officialLinks"></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER / SOURCES ============ -->
+<footer class="footer" id="sources">
+  <div class="container">
+    <div class="foot-top">
+      <div class="brand big"><span class="brand-text"><span class="bt1">ePitch <b>Master</b></span><small>สนามแห่งเซียน</small></span></div>
+      <p class="foot-desc">เว็บไซต์คู่มือโดยแฟนเกม ไม่ใช่เว็บไซต์ทางการของ KONAMI · ไม่มีโลโก้หรือภาพลิขสิทธิ์ (ใช้ CSS / SVG / อีโมจิ) · eFootball™ เป็นเครื่องหมายการค้าของ KONAMI · PlayStation, PS5, DualSense เป็นเครื่องหมายการค้าของ Sony Interactive Entertainment · Xbox เป็นเครื่องหมายการค้าของ Microsoft</p>
+    </div>
+    <h3 class="foot-h">📚 แหล่งที่มาของเนื้อหา</h3>
+    <div class="sources-grid" id="sourcesGrid"></div>
+    <p class="foot-small" id="footUpdated"></p>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="กลับขึ้นด้านบน">↑</button>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
